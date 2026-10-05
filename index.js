@@ -28,3 +28,34 @@ function byteParaBits(byte) {
     
 }
 
+imagem
+    .pipe(new PNG())
+    .on("parsed", function () {
+
+        console.log("Imagem interpretada!");
+
+        const bits = byteParaBits(byte);
+
+        console.log("Byte:", byte);
+        console.log("Bits:", bits);
+
+        for (let i = 0; i < bits.length; i++) {
+
+            const indice = indiceDoCanal(i);
+
+            const bit = bits[i];
+
+            this.data[indice] =
+                colocarBit(
+                    this.data[indice],
+                    bit
+                );
+        }
+
+        this.pack()
+            .pipe(
+                fs.createWriteStream(
+                    "fotoesteganografia_saida.png"
+                )
+            );
+    });
