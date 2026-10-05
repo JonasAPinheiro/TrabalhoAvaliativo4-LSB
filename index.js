@@ -3,9 +3,10 @@ import { PNG } from "pngjs";
 
 const imagem = fs.createReadStream("fotoesteganografia.png");
 
-const caractere = "A";
-const byte = caractere.charCodeAt(0);
-
+const mensagem = "Olá, essa é uma mensagem escondida!";
+const bytes = Buffer.from(mensagem, "utf8");
+const tamanho = Buffer.alloc(4);
+tamanho.writeUInt32BE(bytes.length);
 
 
 imagem.pipe(new PNG()).on("parsed", function() {
