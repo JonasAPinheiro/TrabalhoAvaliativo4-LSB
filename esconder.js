@@ -3,7 +3,14 @@ import { PNG } from "pngjs";
 
 const imagem = fs.createReadStream("fotoesteganografia.png");
 
-const mensagem = "Olá, essa é uma mensagem escondida!";
+const mensagem = process.argv[2];
+
+if (!mensagem) {
+    console.log("Digite uma mensagem.");
+    console.log('Exemplo: node esconder.js "Olá mundo!"');
+    process.exit(1);
+}
+
 const bytes = Buffer.from(mensagem, "utf8");
 
 const tamanho = Buffer.alloc(4);
