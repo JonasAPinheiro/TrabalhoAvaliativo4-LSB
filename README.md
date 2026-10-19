@@ -8,7 +8,7 @@ O sistema é composto por dois scripts principais:
 
 ---
 
-## 📋 Pré-requisitos
+## Pré-requisitos
 
 Certifique-se de ter o **Node.js** instalado em sua máquina. Você pode verificar executando no terminal:
 ```bash
